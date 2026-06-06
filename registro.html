@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro — Mi Álbum Web · TP7</title>
+
+  <!-- =====================================================
+       TP7 — Formularios e Interactividad
+       Laboratorio de Programación - 6° G - 2026
+       Archivo: registro.html
+       Vinculado a: estilos.css (mismo del TP6)
+       ===================================================== -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       HEADER — igual al TP6 (coherencia)
+       ══════════════════════════════════════ -->
+  <div id="header">
+    <h1>Mi Álbum Web de Coleccionables</h1>
+    <p>Laboratorio de Programación · 6° G · 2026</p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       NAV — link activo en Registro
+       ══════════════════════════════════════ -->
+  <nav>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="index.html#">📦 Mis Sobres</a>
+    <a href="index.html#">⭐ Colección</a>
+    <a href="registro.html" class="activo">📝 Registro</a>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       PÁGINA REGISTRO
+       ══════════════════════════════════════ -->
+  <div id="pagina-registro">
+
+    <h2 class="seccion-titulo">📝 Registro de Coleccionista</h2>
+    <p class="seccion-subtitulo">
+      Completá el formulario para unirte al álbum y personalizar tu experiencia de colección.
+    </p>
+
+    <!-- ══════════════════════════════════════
+         FORMULARIO PRINCIPAL
+         Req. TP7: <form> con method="GET" y autocomplete="off"
+         ══════════════════════════════════════ -->
+    <form
+      id="form-registro"
+      method="GET"
+      action="#"
+      autocomplete="off"
+      novalidate
+    >
+
+      <!-- ────────────────────────────────────────
+           SECCIÓN 1 — Datos Personales
+           ──────────────────────────────────────── -->
+      <div class="form-card">
+        <h3>👤 Datos Personales</h3>
+
+        <!-- Req. TP7: Nombre y Apellido individuales con type="text" y required -->
+        <div class="form-fila">
+
+          <!-- Nombre -->
+          <div class="form-grupo">
+            <!-- Req. TP7: <label> con for= vinculado al id= del input -->
+            <label for="nombre">Nombre</label>
+            <input
+              class="form-input"
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ej: Lionel"
+              required
+              autocomplete="off"
+            >
+          </div>
+
+          <!-- Apellido -->
+          <div class="form-grupo">
+            <label for="apellido">Apellido</label>
+            <input
+              class="form-input"
+              type="text"
+              id="apellido"
+              name="apellido"
+              placeholder="Ej: Messi"
+              required
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <!-- Req. TP7: Correo electrónico con type="email" (validación nativa HTML5) -->
+        <div class="form-grupo">
+          <label for="email">Correo Electrónico</label>
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="ejemplo@correo.com"
+            required
+            autocomplete="off"
+          >
+          <p class="form-nota">⚠ El navegador verificará que sea un correo válido antes de enviar.</p>
+        </div>
+
+        <!-- Req. TP7: Contraseña con type="password" (oculta caracteres) -->
+        <div class="form-grupo">
+          <label for="contrasena">Contraseña</label>
+          <input
+            class="form-input"
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            placeholder="Mínimo 8 caracteres"
+            required
+            autocomplete="new-password"
+          >
+        </div>
+
+        <!-- Req. TP7: Edad con type="number", min="6" max="99" (restricción nativa) -->
+        <div class="form-grupo">
+          <label for="edad">Edad del Coleccionista</label>
+          <input
+            class="form-input"
+            type="number"
+            id="edad"
+            name="edad"
+            placeholder="Tu edad"
+            min="6"
+            max="99"
+            required
+            style="max-width: 160px;"
+          >
+          <p class="form-nota">📌 Solo se aceptan edades entre 6 y 99 años.</p>
+        </div>
+      </div>
+      <!-- /form-card datos personales -->
+
+
+      <!-- ────────────────────────────────────────
+           SECCIÓN 2 — Preferencias de Colección
+           ──────────────────────────────────────── -->
+      <div class="form-card">
+        <h3>⭐ Preferencias de Colección</h3>
+
+        <!-- Req. TP7: Botones radio con mismo name para exclusividad -->
+        <div class="form-grupo">
+          <label>Categoría de Álbum Preferido</label>
+          <p class="form-nota" style="margin-bottom: 10px;">
+            Seleccioná una opción. Todos comparten <code>name="categoria"</code> para que sean excluyentes.
+          </p>
+          <div class="opciones-grupo">
+
+            <label class="opcion-item" for="cat-inicial">
+              <!-- Req. TP7: type="radio" con mismo name="categoria" -->
+              <input
+                type="radio"
+                id="cat-inicial"
+                name="categoria"
+                value="inicial"
+              >
+              📦 Álbum Inicial — Para nuevos coleccionistas
+            </label>
+
+            <label class="opcion-item" for="cat-avanzado">
+              <input
+                type="radio"
+                id="cat-avanzado"
+                name="categoria"
+                value="avanzado"
+                checked
+              >
+              💎 Álbum Avanzado — Jugadores de todas las ligas
+            </label>
+
+            <label class="opcion-item" for="cat-legendario">
+              <input
+                type="radio"
+                id="cat-legendario"
+                name="categoria"
+                value="legendario"
+              >
+              🌟 Álbum Legendario — Edición especial limitada
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Req. TP7: Checkboxes para selección múltiple -->
+        <div class="form-grupo">
+          <label>Temáticas de Interés</label>
+          <p class="form-nota" style="margin-bottom: 10px;">
+            Podés seleccionar una o varias opciones a la vez (type="checkbox").
+          </p>
+          <div class="opciones-grid">
+
+            <label class="opcion-item" for="int-futbol">
+              <input type="checkbox" id="int-futbol"   name="intereses" value="futbol"  checked>
+              ⚽ Fútbol
+            </label>
+
+            <label class="opcion-item" for="int-comics">
+              <input type="checkbox" id="int-comics"   name="intereses" value="comics">
+              🦸 Cómics
+            </label>
+
+            <label class="opcion-item" for="int-series">
+              <input type="checkbox" id="int-series"   name="intereses" value="series">
+              🎬 Series
+            </label>
+
+            <label class="opcion-item" for="int-musica">
+              <input type="checkbox" id="int-musica"   name="intereses" value="musica">
+              🎵 Música
+            </label>
+
+            <label class="opcion-item" for="int-anime">
+              <input type="checkbox" id="int-anime"    name="intereses" value="anime">
+              🌸 Anime
+            </label>
+
+            <label class="opcion-item" for="int-deporte">
+              <input type="checkbox" id="int-deporte"  name="intereses" value="deporte">
+              🏆 Deportes
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Req. TP7: Menú <select> con <option> -->
+        <div class="form-grupo">
+          <label for="seccion-album">Sección del Álbum a Completar</label>
+          <select
+            class="form-select"
+            id="seccion-album"
+            name="seccion_album"
+          >
+            <option value="" disabled selected>— Seleccioná una sección —</option>
+            <option value="grupo-a">Grupo A — Porteros y Defensores</option>
+            <option value="grupo-b">Grupo B — Mediocampistas</option>
+            <option value="grupo-c">Grupo C — Delanteros</option>
+            <option value="grupo-d">Grupo D — Figuras Históricas</option>
+            <option value="grupo-e">Grupo E — Selecciones del Mundo</option>
+            <option value="grupo-legendario">Grupo Legendario — Edición Especial</option>
+          </select>
+        </div>
+
+      </div>
+      <!-- /form-card preferencias -->
+
+
+      <!-- ────────────────────────────────────────
+           SECCIÓN 3 — Campos Especiales
+           ──────────────────────────────────────── -->
+      <div class="form-card">
+        <h3>🔒 Datos del Sistema</h3>
+
+        <!-- Req. TP7: Campo readonly — impide edición del usuario -->
+        <div class="form-grupo">
+          <label for="id-sesion">
+            ID de Sesión
+            <span class="badge-readonly">SOLO LECTURA</span>
+          </label>
+          <input
+            class="form-input"
+            type="text"
+            id="id-sesion"
+            name="id_sesion"
+            value="100"
+            readonly
+          >
+          <p class="form-nota">🔐 Este código es asignado automáticamente por el sistema y no puede modificarse.</p>
+        </div>
+
+        <!-- Req. TP7: Campo hidden — viaja al backend sin mostrarse -->
+        <!-- No tiene label porque es invisible para el usuario -->
+        <input
+          type="hidden"
+          id="sistema"
+          name="sistema"
+          value="SistemaAlbumWeb-v2"
+        >
+        <p class="form-nota" style="margin-top: 12px;">
+          ℹ El sistema también envía internamente el identificador
+          <strong style="color:var(--dorado);">SistemaAlbumWeb-v2</strong>
+          como metadato oculto (type="hidden").
+        </p>
+
+      </div>
+      <!-- /form-card datos del sistema -->
+
+
+      <!-- ────────────────────────────────────────
+           SECCIÓN 4 — Perfil y Figuritas Buscadas
+           ──────────────────────────────────────── -->
+      <div class="form-card">
+        <h3>✏️ Mi Perfil de Coleccionista</h3>
+
+        <!-- Req. TP7: <textarea> — nota: cerrar </textarea> en la misma línea -->
+        <div class="form-grupo">
+          <label for="perfil-texto">Reseña personal / Figuritas que te faltan</label>
+          <textarea
+            class="form-textarea"
+            id="perfil-texto"
+            name="perfil"
+            placeholder="Contanos un poco sobre tu colección: ¿desde cuándo coleccionás? ¿qué figuritas te faltan? ¿qué ofrecés para intercambiar?"
+            rows="5"
+          ></textarea>
+          <!-- ↑ Req. TP7: </textarea> cerrado inmediatamente después de la apertura -->
+          <p class="form-nota">Máximo recomendado: 300 caracteres.</p>
+        </div>
+
+        <!-- ── Botones — Req. TP7: type="submit" y type="reset" como <input> ── -->
+        <div class="form-botones">
+
+          <!-- Req. TP7: Botón envío con value="ENVIAR REGISTRO" -->
+          <!-- Req. TP7: text-transform:uppercase + cursor:pointer en CSS -->
+          <input
+            class="btn-submit"
+            type="submit"
+            value="ENVIAR REGISTRO"
+          >
+
+          <!-- Req. TP7: Botón reset con value="RESTABLECER CAMPOS" -->
+          <input
+            class="btn-reset"
+            type="reset"
+            value="RESTABLECER CAMPOS"
+          >
+
+        </div>
+
+        <!-- Mensaje de confirmación (aparece al enviar con JS) -->
+        <div id="mensaje-confirmacion">
+          ✅ ¡Registro enviado correctamente! Bienvenido al álbum, coleccionista.
+        </div>
+
+      </div>
+      <!-- /form-card perfil -->
+
+    </form>
+    <!-- /form-registro -->
+
+  </div>
+  <!-- /pagina-registro -->
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>TP7 · Formularios e Interactividad · Laboratorio de Programación 6° G · 2026</p>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════
+       JS — Validación y confirmación
+       ══════════════════════════════════════ -->
+  <script>
+    const form    = document.getElementById('form-registro');
+    const mensaje = document.getElementById('mensaje-confirmacion');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();   // Evitamos la recarga real de la página
+
+      /* Validación manual (complementa la nativa de HTML5) */
+      const nombre   = document.getElementById('nombre').value.trim();
+      const apellido = document.getElementById('apellido').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const contrasena = document.getElementById('contrasena').value;
+      const edad     = parseInt(document.getElementById('edad').value);
+
+      if (!nombre || !apellido) {
+        alert('⚠ Por favor completá tu Nombre y Apellido.');
+        return;
+      }
+      if (!email || !email.includes('@')) {
+        alert('⚠ El correo electrónico no es válido.');
+        return;
+      }
+      if (!contrasena || contrasena.length < 8) {
+        alert('⚠ La contraseña debe tener al menos 8 caracteres.');
+        return;
+      }
+      if (isNaN(edad) || edad < 6 || edad > 99) {
+        alert('⚠ La edad debe estar entre 6 y 99 años.');
+        return;
+      }
+
+      /* Todo OK → mostrar confirmación */
+      mensaje.style.display = 'block';
+      mensaje.textContent   =
+        `✅ ¡Registro exitoso! Bienvenido, ${nombre} ${apellido}. Tu ID de sesión es: 100.`;
+
+      /* Scroll suave al mensaje */
+      mensaje.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    /* Ocultar mensaje si el usuario resetea el formulario */
+    form.addEventListener('reset', function () {
+      mensaje.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
